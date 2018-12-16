@@ -8,8 +8,15 @@ before_install:
 
   # Set up go-ethereum
   - sudo apt-get update -y -qq
-  - sudo apt-get install -yqq libgmp3-dev 
-  # use canned dependencies from the go-ethereum repository
+  - sudo apt-get install -yqq libgmp3-dev git
+  # clone go-ethereum for deps, without using `go get` nor `dep`
+  - mkdir -p $GOPATH/src/github.com/ethereumclassic 
+  - pushd . &&
+    cd $GOPATH/src/github.com/ethereumclassic &&
+    git clone https://github.com/ethereumclassic/go-ethereum  &&
+    cd go-ethereum && 
+    git checkout fix/gh-orgs-go-build &&
+    popd
 
 install:
   # need to explicitly request version 1.54 since by default we get 1.46 which does not work with C++11
