@@ -11,8 +11,7 @@ before_install:
   - sudo apt-get install -yqq libgmp3-dev git
   # clone go-ethereum for deps, without using `go get` nor `dep`
   - mkdir -p $GOPATH/src/github.com/ethereumclassic 
-  - pushd . &&
-    cd $GOPATH/src/github.com/ethereumclassic &&
+  - pushd $GOPATH/src/github.com/ethereumclassic &&
     git clone https://github.com/ethereumclassic/go-ethereum  &&
     cd go-ethereum && 
     git checkout fix/gh-orgs-go-build &&
