@@ -19,17 +19,14 @@ before_build:
     - cd c:\projects\ethash
     - mkdir build
     - cd build
-    - cmake -DBOOST_ROOT=C:\Libraries\boost_1_67_0 ..
+    - cmake -DBOOST_ROOT=C:\Libraries\boost_1_67_0 -DBOOST_LIBRARYDIR=C:\Libraries\boost_1_67_0\lib32-msvc-14.1 ..
 
 build:
-    project: ALL_BUILD.vcxproj      # path to Visual Studio solution or project
+    project: build/ALL_BUILD.vcxproj      # path to Visual Studio solution or project
 
 after_build:
     - echo "Running tests..."
     - cd c:\projects\ethash\test\c\Debug
     - Test.exe
     - echo "Finished!"
-
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
