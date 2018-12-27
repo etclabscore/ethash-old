@@ -22,7 +22,7 @@ IF( NOT Boost_FOUND )
         set(Boost_USE_STATIC_LIBS OFF)
 
     endif()
-    find_package(Boost 1.67.0 COMPONENTS unit_test_framework system filesystem)
+    find_package(Boost 1.54.0 COMPONENTS unit_test_framework system filesystem)
 ENDIF()
 
 IF (Boost_FOUND)
